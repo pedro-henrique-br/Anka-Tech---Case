@@ -53,9 +53,9 @@ cd ankatech</code></pre>
 
 <ol>
   <li>Vá para a pasta <code>frontend/</code></li>
-  <li>Instale as dependências:
+  <li>Instale as dependências (backend e frontend):
     <pre><code>npm install</code></pre>
-  </li>
+  </li> 
   <li>Rode a aplicação (backend e frontend):
     <pre><code>npm run dev</code></pre>
   </li>

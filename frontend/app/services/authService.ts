@@ -17,7 +17,6 @@ const loginUser = async (credentials: AuthCredentials): Promise<AuthResponse> =>
 }
 
 const logoutUser = async (): Promise<void> => {
-  document.cookie = 'token=; Max-Age=0; path=/'
   await axios.post(`${API_URL}/auth/logout`)
 }
 

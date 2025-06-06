@@ -19,7 +19,7 @@ import { EditCostumerData, editCostumerSchema } from "@/schemas/customerSchema"
 
 type EditCustomerModalProps = {
   customer: Customer
-  children: React.ReactNode // adiciona children
+  children: React.ReactNode
 }
 
 export function EditCustomerModal({ customer }: EditCustomerModalProps) {

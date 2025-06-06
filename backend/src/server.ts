@@ -8,7 +8,7 @@ const app = Fastify()
 
 app.register(cors, {
   origin: "*",
-  methods: ['GET', 'POST', 'PATCH', 'DELETE', "PUT", "OPTIONS"], // ✅ adicione todos os métodos que você usa
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', "PUT", "OPTIONS"]
 })
 
 app.register(customerRoutes, { prefix: '/customers' })
@@ -16,5 +16,4 @@ app.register(authRoutes)
 app.register(assetRoutes, { prefix: '/assets' })
 
 app.listen({ port: 3333 }, () => {
-  console.log('Running on http://localhost:3333')
 })

@@ -1,4 +1,3 @@
-// components/CreateCustomerModal.tsx
 "use client"
 
 import {

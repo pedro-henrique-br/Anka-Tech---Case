@@ -1,4 +1,3 @@
-// ✅ Corrigido: componente React
 import React from 'react'
 import {
   Breadcrumb,

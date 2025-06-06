@@ -28,7 +28,7 @@ import { Button } from '@/components/ui/button'
 import { useDeleteCustomer, useUpdateCustomerStatus } from '@/app/services/costumerService'
 import { CreateAssetModal } from '@/app/dashboard/(financialAssets)/components/CreateAssetModal'
 import { Pencil } from "lucide-react"
-import { EditCustomerModal } from "@/app/dashboard/(costumers)/components/EditCustomerModal" // ajuste o path conforme seu projeto
+import { EditCustomerModal } from "@/app/dashboard/(costumers)/components/EditCustomerModal"
 
 type CustomerTableProps = {
   isLoading: boolean

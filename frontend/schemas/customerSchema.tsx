@@ -1,4 +1,3 @@
-// frontend/schemas/authSchemas.ts
 import { z } from 'zod'
 
 export const costumerSchema = z.object({

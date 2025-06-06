@@ -5,7 +5,6 @@ import { z } from 'zod'
 const prisma = new PrismaClient()
 
 export default async function assetRoutes(app: FastifyInstance) {
-  // Cadastrar novo ativo e associar a um cliente
   app.post('/', async (request, reply) => {
     const bodySchema = z.object({
       name: z.string(),
@@ -40,7 +39,6 @@ export default async function assetRoutes(app: FastifyInstance) {
     return assets
   })
 
-  // Listar ativos por cliente
   app.get('/:customerId', async (request, reply) => {
     const paramsSchema = z.object({
       customerId: z.string()

@@ -24,7 +24,7 @@ type CreateAssetModalProps = {
 
 export function CreateAssetModal({ customerId }: CreateAssetModalProps) {
   const [open, setOpen] = useState(false)
-  const createAsset = useCreateAsset(customerId as number)
+  const createAsset = useCreateAsset()
 
   const {
     register,

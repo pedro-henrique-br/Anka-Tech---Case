@@ -78,10 +78,8 @@ export const CustomerTable = ({ customers }: CustomerTableProps) => {
                 onStatusChange={(newStatus) => handleStatusChange(costumer?.id as number, newStatus)}
               />
               <TableCell className="flex gap-2">
-                {/* Botão para criar ativo */}
                 <CreateAssetModal customerId={costumer.id} />
 
-                {/* Botão para deletar */}
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <Button variant="ghost" size="icon">

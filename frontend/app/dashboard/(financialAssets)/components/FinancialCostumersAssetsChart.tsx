@@ -24,7 +24,7 @@ export const FinancialCostumersAssetsChart = ({ assets }: Props) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis
-            scale="log"
+            scale="auto"
             domain={['auto', 'auto']}
             allowDataOverflow={true}
             tickFormatter={(value) => {

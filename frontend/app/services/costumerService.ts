@@ -5,7 +5,6 @@ import { Bounce, toast } from 'react-toastify'
 
 const API_URL = 'http://localhost:3333'
 
-// Buscar clientes
 const fetchCustomers = async (): Promise<Customer[]> => {
   const { data } = await axios.get(`${API_URL}/customers`)
   return data ?? []
@@ -27,13 +26,11 @@ const updateCustomer = async (customer: Customer): Promise<Customer> => {
   return response.data
 }
 
-// Criar cliente
 const createCustomer = async (customer: Customer): Promise<Customer> => {
   const response = await axios.post(`${API_URL}/customers`, customer)
   return response.data
 }
 
-// Hook para buscar clientes
 export const useCustomers = () => {
   return useQuery({
     queryKey: ['customers'],
@@ -45,7 +42,7 @@ export const useCustomerById = (id: number) => {
   return useQuery({
     queryKey: ['customer', id],
     queryFn: () => fetchCustomerById(id),
-    enabled: !!id, // só faz a requisição se `id` for truthy
+    enabled: !!id,
   })
 }
 
@@ -53,7 +50,6 @@ const deleteCustomer = async (id: number): Promise<void> => {
     await axios.delete(`${API_URL}/customers/${id}`)
 }
 
-// Atualizar status do cliente
 const updateCustomerStatus = async (params: { id: number; status: 'Ativo' | 'Inativo' }): Promise<Customer> => {
   const response = await axios.patch(`${API_URL}/customers/${params.id}/status`, {
     status: params.status,
@@ -61,7 +57,6 @@ const updateCustomerStatus = async (params: { id: number; status: 'Ativo' | 'Ina
   return response.data
 }
 
-// ✅ Hook para criar cliente com onSuccess correto
 export const useCreateCustomer = () => {
   const queryClient = useQueryClient()
 
@@ -132,7 +127,6 @@ export const useDeleteCustomer = () => {
   })
 }
 
-// ✅ Hook para atualizar status do cliente
 export const useUpdateCustomerStatus = () => {
   const queryClient = useQueryClient()
 
@@ -172,7 +166,7 @@ export const useUpdateCustomer = () => {
   return useMutation({
     mutationFn: updateCustomer,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['customers'] }) // se houver cache de clientes
+      queryClient.invalidateQueries({ queryKey: ['customers'] }) 
       toast.success('Cliente atualizado com sucesso', {
         position: "top-right",
         autoClose: 2000,

@@ -26,7 +26,6 @@ export default async function customerRoutes(app: FastifyInstance) {
     return customer;
   });
 
-  // Atualizar cliente por ID
   app.put("/:id", async (request, reply) => {
     const paramsSchema = z.object({
       id: z.string(),
@@ -54,7 +53,6 @@ export default async function customerRoutes(app: FastifyInstance) {
     }
   });
 
-  // PATCH /customers/:id/status
   app.patch("/:id/status", async (request, reply) => {
     const { id } = request.params as { id: number };
     const { status } = request.body as { status: "Ativo" | "Inativo" };

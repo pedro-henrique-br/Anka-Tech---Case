@@ -40,7 +40,6 @@ export default async function assetRoutes(app: FastifyInstance) {
     return assets
   })
 
-
   // Listar ativos por cliente
   app.get('/:customerId', async (request, reply) => {
     const paramsSchema = z.object({

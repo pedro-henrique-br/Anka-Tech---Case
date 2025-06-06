@@ -26,7 +26,9 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { StatusCell } from './StatusCell'
 import { Button } from '@/components/ui/button'
 import { useDeleteCustomer, useUpdateCustomerStatus } from '@/app/services/costumerService'
-import { CreateAssetModal } from '../../financialAssets/components/CreateAssetModal'
+import { CreateAssetModal } from '@/app/dashboard/(financialAssets)/components/CreateAssetModal'
+import { Pencil } from "lucide-react"
+import { EditCustomerModal } from "@/app/dashboard/(costumers)/components/EditCustomerModal" // ajuste o path conforme seu projeto
 
 type CustomerTableProps = {
   isLoading: boolean
@@ -72,7 +74,7 @@ export const CustomerTable = ({ customers }: CustomerTableProps) => {
               </TableCell>
               <TableCell>{costumer.email}</TableCell>
               <StatusCell
-                status={costumer.status}
+                status={costumer?.status || 'Ativo'}
                 onStatusChange={(newStatus) => handleStatusChange(costumer?.id as number, newStatus)}
               />
               <TableCell className="flex gap-2">
@@ -100,6 +102,11 @@ export const CustomerTable = ({ customers }: CustomerTableProps) => {
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>
+                <EditCustomerModal customer={costumer}>
+                  <Button variant="ghost" size="icon">
+                    <Pencil className="w-4 h-4 text-orange-600" />
+                  </Button>
+                </EditCustomerModal>
               </TableCell>
             </TableRow>
           ))}

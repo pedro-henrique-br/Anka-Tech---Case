@@ -17,6 +17,7 @@ const createAsset = async (asset: CreateAsset): Promise<Asset> => {
   return data
 }
 
+
 const fetchAllAssets = async (): Promise<Asset[]> => {
   const { data } = await axios.get(`${API_URL}/assets`)
   return data ?? []

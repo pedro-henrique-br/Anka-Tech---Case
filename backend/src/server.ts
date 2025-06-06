@@ -8,8 +8,7 @@ const app = Fastify()
 
 app.register(cors, {
   origin: "*",
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'], // ✅ adicione todos os métodos que você usa
-  credentials: true,
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', "PUT", "OPTIONS"], // ✅ adicione todos os métodos que você usa
 })
 
 app.register(customerRoutes, { prefix: '/customers' })

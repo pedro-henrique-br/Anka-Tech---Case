@@ -1,14 +1,6 @@
 "use client"
 
 import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select"
-
-import {
   Dialog,
   DialogTrigger,
   DialogContent,
@@ -19,13 +11,12 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Controller, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { AssetData, createAssetSchema } from "@/schemas/assetSchema"
 import { useCreateAsset } from "@/app/services/assetsService"
 import { Customer } from "@/app/types/Customer"
-import { useCustomerById } from "@/app/services/costumerService"
 
 type CreateAssetModalProps = {
   customerId: Customer["id"]
@@ -34,12 +25,10 @@ type CreateAssetModalProps = {
 export function CreateAssetModal({ customerId }: CreateAssetModalProps) {
   const [open, setOpen] = useState(false)
   const createAsset = useCreateAsset(customerId as number)
-  const { data: customer, isLoading } = useCustomerById(customerId as number)
 
   const {
     register,
     handleSubmit,
-    control,
     reset,
     formState: { errors },
   } = useForm<AssetData>({
@@ -72,6 +61,7 @@ export function CreateAssetModal({ customerId }: CreateAssetModalProps) {
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <input type="hidden" value={customerId} {...register("customerId", { valueAsNumber: true })} />
           <div>
             <Input
               className="bg-white text-gray-900 border border-gray-300 focus:border-orange-600 focus:ring-orange-600 h-12 px-4 text-lg"
@@ -96,21 +86,8 @@ export function CreateAssetModal({ customerId }: CreateAssetModalProps) {
             )}
           </div>
 
-          <div>
-            <Input
-              className="bg-white text-gray-900 border border-gray-300 focus:border-orange-600 focus:ring-orange-600 h-12 px-4 text-lg"
-              placeholder="Cliente"
-              disabled
-              value={customer?.name || ''}
-              {...register("customerId")}
-            />
-            {errors.name && (
-              <p className="text-red-500 text-sm">{errors?.customerId?.message}</p>
-            )}
-          </div>
-
           <DialogFooter>
-            <Button type="submit" className="bg-orange-600 hover:bg-orange-700">
+            <Button type="submit" className="bg-orange-600 hover:bg-orange-700 hover:cursor-pointer">
               Salvar
             </Button>
           </DialogFooter>

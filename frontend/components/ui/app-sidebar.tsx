@@ -6,12 +6,11 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar"
-import React, { useEffect } from 'react'
-import { Users, DollarSign, LogOut, Loader2 } from "lucide-react"
+import React from 'react'
+import { DollarSign, LogOut } from "lucide-react"
 import { Button } from "./button"
 import { usePathname } from 'next/navigation'
 import { useHelpers } from "@/app/utils/helpers"
-import { FullScreenLoader } from "./fullscreenloader"
 
 export const AppSidebar = () => {
   const { handleChangeRoute, handleLogout } = useHelpers()
@@ -30,26 +29,14 @@ export const AppSidebar = () => {
           <SidebarGroup className="flex flex-col gap-2">
             <Button
               variant="ghost"
-              onClick={() => handleChangeRoute('/dashboard/financialAssets')}
+              onClick={() => handleChangeRoute('/dashboard')}
               className={`flex items-center w-full gap-5 px-4 py-3 text-base font-medium cursor-pointer justify-center rounded-none transition-all duration-200
-              ${isActive('/financialAssets')
+              ${isActive('/dashboard')
                   ? 'text-orange-600 border-r-4 border-orange-600'
                   : 'text-black border-r-4 border-transparent'}`}
             >
               <DollarSign size={24} />
-              Ativos
-            </Button>
-
-            <Button
-              variant="ghost"
-              onClick={() => handleChangeRoute('/dashboard/costumers')}
-              className={`flex items-center w-full gap-5 px-4 py-3 text-base font-medium cursor-pointer justify-center rounded-none transition-all duration-200
-              ${isActive('/costumers')
-                  ? 'text-orange-600 border-r-4 border-orange-600'
-                  : 'text-black border-r-4 border-transparent'}`}
-            >
-              <Users size={24} />
-              Clientes
+              Dashboard
             </Button>
           </SidebarGroup>
         </SidebarContent>

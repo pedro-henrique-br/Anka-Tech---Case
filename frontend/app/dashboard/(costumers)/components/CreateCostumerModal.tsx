@@ -88,6 +88,7 @@ const onSubmit = (data: CostumerData) => {
           
             control={control}
             name="status"
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             render={({ field }: { field: any }) => (
               <Select  onValueChange={field.onChange} value={field.value} >
                 <SelectTrigger  className="bg-white text-gray-900 border border-gray-300 h-12 px-4 text-sm w-full mb-8">

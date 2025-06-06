@@ -21,6 +21,11 @@ const fetchCustomerById = async (id: number): Promise<Customer | null> => {
   }
 }
 
+const updateCustomer = async (customer: Customer): Promise<Customer> => {
+  const { id, ...data } = customer
+  const response = await axios.put(`${API_URL}/customers/${id}`, data)
+  return response.data
+}
 
 // Criar cliente
 const createCustomer = async (customer: Customer): Promise<Customer> => {
@@ -158,5 +163,38 @@ export const useUpdateCustomerStatus = () => {
         transition: Bounce,
       })
     },
+  })
+}
+
+export const useUpdateCustomer = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: updateCustomer,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['customers'] }) // se houver cache de clientes
+      toast.success('Cliente atualizado com sucesso', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        transition: Bounce,
+      })
+    },
+    onError: () => {
+      toast.error('Erro ao atualizar cliente', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        transition: Bounce,
+      })
+    }
   })
 }

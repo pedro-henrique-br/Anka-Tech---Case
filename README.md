@@ -7,6 +7,8 @@
 
 <hr />
 
+<img src="https://github.com/user-attachments/assets/5e74974e-33b2-40a1-9be9-02ea10329755" />
+
 <h2>🚀 Tecnologias Utilizadas</h2>
 
 <h3>Backend</h3>
@@ -40,6 +42,7 @@ cd ankatech</code></pre>
 <p>Crie um arquivo <code>.env</code> dentro da pasta <code>backend/</code> com o seguinte conteúdo:</p>
 
 <pre><code>DATABASE_URL="mysql://USUARIO:SENHA@HOST:PORTA/NOME_DO_BANCO"</code></pre>
+<pre><code>JWT_SECRET=jwt_seguro</code></pre>
 
 <h3>3. Subir os containers</h3>
 

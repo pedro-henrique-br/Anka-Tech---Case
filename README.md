@@ -52,6 +52,10 @@ cd ankatech</code></pre>
 
 <hr />
 
+<h3>4. Aplicar as Migrations no banco de dados</h3>
+
+<pre><code>npx prisma migrate dev</code></pre>
+
 <h2>🔧 Rodando o Frontend - Backend</h2>
 
 <ol>
@@ -121,6 +125,6 @@ cd ankatech</code></pre>
 
 <h2>🧑‍💼 Autor</h2>
 
-<p>Desenvolvido por <a href="https://github.com/pedro-henrique-br" target="_blank">Pedro Henrique</a></p>
+<p>Desenvolvido por <a href="[https://github.com/seu-usuario](https://github.com/pedro-henrique-br)" target="_blank">Pedro Henrique</a></p>
 
 <hr />
